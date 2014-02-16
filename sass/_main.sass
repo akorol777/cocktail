@@ -1,43 +1,121 @@
-// Normally mainpage styles
 .wrap
-	//background: #345
 	margin: 140px auto 50px 
 	width: 908px
+	+clr
+	+box
+	height: 2000px//KILL
+.wrap, textarea, input
 	font-family: "PTSans", sans-serif
 	font-size: 11px
-	line-height: 11px
+	line-height: 11px	
+	color: #585858 
 .block
+	position: relative
 	padding: 26px 0px 0px 17px
 	border: 1px solid #e0e0e0
 	+border-radius(6px)
 	+box
 	+clr
 	background-color: #fff
+	margin-bottom: 25px
 	@include background-image(linear-gradient(top, #ededed 0%, #fff 50%, #ededed 100%))
-.column
+.block-big
+	min-height: 472px
+.block-wrap
+	//border: 1px solid red
+	position: relative
+	+box
+	+clr	
+	height: 200px//KILL	
+.block-main	
+	&:before
+		content: ""
+		position: relative
+		min-width: 157px
+		display: inline-block
+		text-align: center
+		+border-radius(9px)
+		+box
+		color: #fff
+		font-family: "PTSans", sans-serif
+		font-size: 11px
+		line-height: 11px
+		height: 18px
+		+text-shadow (1px -1px 1px rgba( 0, 0, 0, .5))
+.block-main-descr
+	&:before		
+		background: #e57a02
+		+g(#faa604, #cf4e00)
+		top: -36px
+		left: -421px	
+		padding-top: 4px
+		content: "Описание"
+.column-normal
 	float: left
-	width: 415px
+	width: 420px
 	+clr
+	+box
+.column-bigger
+	width: 499px
+	float: left
+	height: 100%
+	&:before	
+		background: #6eb203
+		top: -34px
+		left: 0px	
+		padding-top: 4px
+		content: "Ингредиенты"			
+		+g(#abdc04, #318901)
+.column-smaller
+	width: 383px
+	float: right
+	height: 100%
+	&:before	
+		background: #6eb203
+		top: -34px
+		left: 0px	
+		padding-top: 4px
+		content: "Параметры"			
+		background: #2395cb
+		+g(#45baf8, #006f9d)
+
+
+
 .row
-	padding-bottom: 17px 
+	margin-bottom: 17px 
 .row__descr
 	display: block
 	padding: 0 0 4px 2px 
+.row__main	
+	display: inline-block
 .row__input, .row__textarea	
 	border: 1px solid #e5e5e5 
 	+box-shadow (inset 0px 1px 3px 0px #a7a7a7)
-	padding: 2px
+	padding: 3px
 .row__input-big	
-	width: 308px
+	width: 313px
+	+box
 .row__textarea
 	resize: vertical	
 	width: 100%
 	height: 130px
-.column
-	.logo-text
-		margin-top: 19px
-		margin-left: 132px 
-	.logo-drink
-		margin-top: 41px
-		margin-left: 102px
+	+box
+.logo-text
+	margin-left: 127px 
+.logo-drink
+	margin-top: 41px
+	margin-left: 97px
+	
+/*-----ing---------------------------------*/
+.ing
+.row__main-name
+	width: 154px 
+	margin-right: 10px
+.row__main-number
+	width: 41px
+	margin-right: 10px
+.row__main-unit
+	width: 155px
+	margin-right: 18px
+.row__main-decor		
 
