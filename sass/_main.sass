@@ -184,13 +184,14 @@ $sel-bg_white: #fff
 		padding-top: 2px
 		position: absolute
 		right: 0px
-		top: 0px
+		top: -1px
 		border-left: 1px solid $f-border
 		width: 16px
 		height: 16px 
 		+border-radius(0px 3px 3px 0px)
 		background: rgba(172,172,172,1) 
 		background: linear-gradient(to bottom, rgba(227,227,227,1) 0%,rgba(172,172,172,1) 50%,rgba(156,156,156,1) 51%,rgba(228,228,228,1) 100%) 
+		padding: 2px 0px 0px 0px 
 	&.is-open
 		+border-radius(5px 5px 0px 0)
 		box-shadow: none
@@ -253,6 +254,7 @@ $sel-bg_white: #fff
 	display: inline-block
 	height: 11px
 	width: 5px
+	vertical-align: top 
 /*-----options-----------------------------------*/
 .options
 	width: 154px
