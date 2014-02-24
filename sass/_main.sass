@@ -1,14 +1,24 @@
 .wrap
-	margin: 140px auto 50px 
+	margin: 140px auto 0px 
 	width: 908px
 	+clr
 	+box
-	height: 2000px//KILL
+	padding-bottom: 70px
 .wrap, textarea, input
 	font-family: "PTSans", sans-serif
 	font-size: 11px
 	line-height: 11px	
 	color: #585858 
+	a
+		color: #585858 
+		&:hover
+			text-decoration: none
+a, .radio, .check__label
+	+transition(0.3s)
+	&:hover
+		color: #000
+		+text-shadow (1px -1px 2px rgba(125,125,125,.5))
+/*-----block-------------------------------*/	
 .block
 	position: relative
 	padding: 26px 0px 0px 17px
@@ -21,16 +31,27 @@
 	@include background-image(linear-gradient(top, #ededed 0%, #fff 50%, #ededed 100%))
 .block-big
 	min-height: 472px
+.block-vol	
+	height: 67px
+	padding: 24px 0px 0px 37px 
+	margin-bottom: 27px
 .block-wrap
-	//border: 1px solid red
 	position: relative
 	+box
 	+clr	
-	height: 200px//KILL	
+	height: 308px	
+	margin-bottom: 24px
+.block-hard
+	+border-radius(5px 5px 0 0)	
+	margin-bottom: 0
+.block-rectangle
+	background: #eee
+	border: 1px solid #f5f5f5
+	border-bottom: 1px solid #d0d0d0 	
 .block-main	
 	&:before
 		content: ""
-		position: relative
+		position: absolute
 		min-width: 157px
 		display: inline-block
 		text-align: center
@@ -42,14 +63,15 @@
 		line-height: 11px
 		height: 18px
 		+text-shadow (1px -1px 1px rgba( 0, 0, 0, .5))
+		top: -10px
+		left: 16px
 .block-main-descr
 	&:before		
 		background: #e57a02
 		+g(#faa604, #cf4e00)
-		top: -36px
-		left: -421px	
 		padding-top: 4px
 		content: "Описание"
+/*-----column-------------------------------------------*/		
 .column-normal
 	float: left
 	width: 420px
@@ -61,8 +83,7 @@
 	height: 100%
 	&:before	
 		background: #6eb203
-		top: -34px
-		left: 0px	
+		top: -8px
 		padding-top: 4px
 		content: "Ингредиенты"			
 		+g(#abdc04, #318901)
@@ -72,17 +93,16 @@
 	height: 100%
 	&:before	
 		background: #6eb203
-		top: -34px
-		left: 0px	
+		top: -8px
+		left: 18px
 		padding-top: 4px
 		content: "Параметры"			
 		background: #2395cb
 		+g(#45baf8, #006f9d)
-
-
-
+.column-bigger, .column-smaller
+	padding-top: 32px
 .row
-	margin-bottom: 17px 
+	margin-bottom: 16px 
 .row__descr
 	display: block
 	padding: 0 0 4px 2px 
@@ -92,6 +112,9 @@
 	border: 1px solid #e5e5e5 
 	+box-shadow (inset 0px 1px 3px 0px #a7a7a7)
 	padding: 3px
+	width: 100%
+.row__input
+	+box-shadow (inset 0px 1px 1px 0px #7c7c7c, inset 0px 1px 3px 0px #a7a7a7)//, 1px 1px 3px 0px #000)
 .row__input-big	
 	width: 313px
 	+box
@@ -101,21 +124,437 @@
 	height: 130px
 	+box
 .logo-text
+	margin-top: 19px
 	margin-left: 127px 
 .logo-drink
 	margin-top: 41px
 	margin-left: 97px
-	
 /*-----ing---------------------------------*/
 .ing
+.row__main-text
+	padding-left: 2px	
+.row-text
+	margin-bottom: 4px	
 .row__main-name
 	width: 154px 
 	margin-right: 10px
 .row__main-number
-	width: 41px
+	width: 46px
+	vertical-align: bottom
 	margin-right: 10px
+	+box
 .row__main-unit
 	width: 155px
 	margin-right: 18px
-.row__main-decor		
+.row__main-decor
+	width: 63px
+	text-align: center
+	vertical-align: baseline		
+/*------------------------- select  -------------------------*/
+$f-height: 16px
+$f-bg: #fff
+$f-border: #8a8a8a
+$sel-padding: 0 7px
+$sel-bg_white: #fff
+.select
+	width: inherit
+	height: $f-height
+	line-height: ($f-height - 2px)
+	border: 1px solid $f-border
+	cursor: pointer
+	position: relative
+	border-radius: 5px
+	+box-shadow(0 0 6px rgba(0,0,0,.2))
+	+sel
+	background: rgba(237,237,237,1) 
+	background: linear-gradient(to bottom, rgba(252,252,252,1) 0%,rgba(237,237,237,1) 50%,rgba(225,225,225,1) 51%,rgba(255,255,255,1) 100%) 
+	span
+		padding: $sel-padding
+		margin-top: 1px
+		display: block
+		overflow: hidden
+		text-overflow: ellipsis
+		white-space: nowrap
+	em
+		font-style: normal
+	.select__icon
+		+box
+		display: inline-block
+		text-align: center
+		padding-top: 2px
+		position: absolute
+		right: 0px
+		top: 0px
+		border-left: 1px solid $f-border
+		width: 16px
+		height: 16px 
+		+border-radius(0px 3px 3px 0px)
+		background: rgba(172,172,172,1) 
+		background: linear-gradient(to bottom, rgba(227,227,227,1) 0%,rgba(172,172,172,1) 50%,rgba(156,156,156,1) 51%,rgba(228,228,228,1) 100%) 
+	&.is-open
+		+border-radius(5px 5px 0px 0)
+		box-shadow: none
+		.select__icon
+			+border-radius(0px 3px 0px 0px)
+		.select__drop
+			display: block
+			border-top: none 
+	.select__drop
+		display: none
+		position: absolute
+		top: 100%
+		left: -1px
+		width: 100%
+		z-index: 2666
+		background: $f-bg
+		border: 1px solid $f-border
+		border-top-color: #fff
+		border-radius: 0 0 5px 5px
+		overflow: hidden
+		@include background-image(linear-gradient(#fefefe 0%,  #f3f3f3 100%))
+	ul
+		margin: 0
+	li
+		height: 16px
+		line-height: 16px
+		padding: $sel-padding
+		border-top: 1px solid $f-border
+		&:hover
+			background: darken($f-bg, 5%)
+			cursor: pointer
+		span
+			padding: 0
+.input-small
+	text-align: center
+	height: 19px
+	padding: 5px 0 0px 
+	+box
+/*-----label-checkbox--------------------------*/
+.label-checkbox
+	width: 12px
+	height: 14px
+	display: inline-block
+	position: relative
+	overflow: hidden
+	input
+		display: none
+	span
+		position: absolute
+		left: 0 
+		top: 0
+		width: 100%
+		height: 100%
+		background: url(../img/icons/checkbox.png) no-repeat
+		cursor: pointer
+	input[type="checkbox"]:checked + span
+		background-position: 0px -14px
+.ico-select
+	+s(ico-select)		
+	display: inline-block
+	height: 11px
+	width: 5px
+/*-----options-----------------------------------*/
+.options
+	width: 154px
+	padding-left: 4px
+	.row__main
+		margin-left: 4px
+		margin-bottom: 4px
+	.select		
+		margin-bottom: 17px
+/*-----labels--------------------------------*/
+.label
+	display: inline-block
+	color: #FFF 		
+	+box
+.label-medium
+	background: #7C7C7C
+	margin-left: -1px
+	margin-top: 26px
+	+box
+	height: 18px
+	padding: 2px 0 0 25px
+	position: relative
+	&:after
+		position: absolute
+		content: ""
+		top: 0px
+		right: -9px
+		width: 0px
+		height: 0px
+		border-style: solid
+		border-width: 9px 0 9px 9px
+		border-color: transparent transparent transparent #7d7d7d
+.label-big
+	height: 22px
+	min-width: 143px 
+	text-align: center
+	font-weight: bold
+	font-size: 10px
+	padding-top: 6px
+	+text-shadow(0px 1px 1px rgba(0,0,0,.29))
+	position: relative
+	&:after
+		content: ""
+		position: absolute
+		left: 66px
+		bottom: -8px 
+		width: 0px
+		height: 0px
+		border-style: solid
+		border-width: 4px 4px 4px 4px		
+.label-yellow
+	background: #d88602 
+	+g(#ffcd1e,#d88602)
+	margin-bottom: 25px
+	&:after
+		border-color: #d88602 transparent transparent transparent 
+.label-red
+	background: #c72807 
+	+g(#fb7d17,#c72807)
+	margin-bottom: 22px
+	margin-top: 19px
+	&:after
+		border-color: #c72807 transparent transparent transparent 
+.label-blue
+	background: #02baed 
+	+g(#4ad8dd,#02baed)
+	margin-bottom: 22px
+	margin-top: 20px
+	&:after
+		border-color: #02baed transparent transparent transparent 
+.label-orange
+	background: #ff6505 
+	+g(#faa717,#ff6505)
+	margin-bottom: 25px
+	margin-top: 28px
+	&:after
+		border-color: #ff6505 transparent transparent transparent 
+.label-bottom
+	+border-radius(0px 0px 5px 5px)
+	background-color: #dbdbdb
+	@include background-image(linear-gradient(top, #c8c8c8 0%, #ededed 100%))
+	padding: 2px 0px 0px 22px
+	margin-left: 9px
+	height: 19px
+	min-width: 140px
+	margin-bottom: 18px    
+	a
+		text-decoration: none
+		border-bottom: 1px dotted #585858
+		&:hover
+			border-bottom: none	 
+/*-----photo----------------------------------------*/
+.photo	
+	padding: 3px 5px 5px 0px 
+	+clr
+	margin-bottom: 39px
+.photo__drink
+	display: inline-block
+	border: 1px solid #d2d2d2
+	+border-radius(6px)
+	+box-shadow(0 0 6px rgba(0,0,0,.18))
+	+box
+	height: 73px
+	width: 60px
+	background: #FFF 
+	overflow: hidden
+	text-align: center
+	vertical-align: top
+	margin-left: 30px
+	a
+		img	
+			max-width: 100% 
+.photo__link
+	color: #333
+	margin-left: 13px	
+.line-dotted
+	height: 1px
+	width: 324px
+	background: url(../img/bg-dotted.png) repeat-x
+	display: inline-block 
+/*-----btn-----------------------------------------------------------*/
+.btn
+	border: 1px solid #6f6f6f
+	+border-radius(10px)
+	+box-shadow(0px 1px 0px #c6c6c6)
+	background: rgba(172,172,172,1) 
+	background: linear-gradient(to bottom, rgba(246,246,246,1) 0%,rgba(234,234,234,1) 50%,rgba(217,217,217,1) 51%,rgba(255,255,255,1) 100%) 
+	height: 18px
+	+box
+	min-width: 100px 
+	color: #535353 
+	font-size: 11px
+	line-height: 11px
+	&:hover
+		background: rgba(227,227,227,1) 
+		background: linear-gradient(to bottom, rgba(227,227,227,1) 0%,rgba(172,172,172,1) 100%) 
+/*-----item--------------------------------------------*/
+.item
+	position: relative
+	padding: 3px 0px 0px 15px 
+	margin-bottom: 2px
+	&:before
+		position: absolute
+		content: ""
+		width: 4px
+		height: 16px
+		top: 0px
+		left: 4px
+.item-red	
+	&:before
+		+g(#e30613,#f2a13b)
+.item-green	
+	&:before
+		+g(#fffe9d,#7dc507)
+.item-blue	
+	&:before
+		+g(#baeffc,#0b8fcc)				
+/*-----radio-----------------------------*/
+$rad-size: 13px
+$rad-checked_size: 4px
+$rad-checked_bg: #000
+$f-color: #123
+.radio
+	height: $rad-size 
+	position: relative
+	display: inline-block
+	vertical-align: middle
+	cursor: pointer
+	span
+		display: inline-block
+		vertical-align: text-top
+		margin-left: 6px
+	input
+		+opacity(0)
+		position: relative
+	input + span
+		&:before
+			content: ""
+			position: absolute
+			top: 0px
+			left: 0px
+			width: $rad-size
+			height: $rad-size
+			border: 1px solid $f-border
+			border-radius: 50%
+			background: #fff
+			+opacity(1)
+			+box
+	input:checked + span
+		&:after
+			content: ""
+			position: absolute
+			top: (($rad-size - $rad-checked_size) / 2)
+			left: (($rad-size - $rad-checked_size) / 2)
+			width: 4px
+			height: 4px
+			border-radius: 50%
+			background: $rad-checked_bg
+.radio-green
+	margin-right: 89px
+	input + span
+		&:before
+			+box-shadow(0px 0px 0px 5px #3aa935)
+.radio-yellow
+	margin-right: 89px
+	input + span
+		&:before
+			+box-shadow(0px 0px 0px 5px #f5bf2e)
+.radio-orange
+	margin-right: 89px
+	input + span
+		&:before
+			+box-shadow(0px 0px 0px 5px #fc8200)
+.radio-red
+	input + span
+		&:before
+			+box-shadow(0px 0px 0px 5px #f63e1a)	
+.block-radio
+	padding-top: 25px 
+	height: 52px
+	padding-left: 17px
+	.radio
+		margin-right: 37px
+		input
+			position: absolute	
+		input + span
+			&:before
+				top: 0px
+				left: inherit 
+				right: -15px
+		input:checked + span
+			&:after
+				left: inherit
+				right: -10px
+	.radio-last
+		margin-right: 0	
+.block-check	
+	padding: 16px 0px 18px 22px 	
+.block-radio-type
+	padding-top: 20px
+	.radio
+		margin-right: 20px	
+.block-goblet
+	.radio
+		margin-right: 25px
+.block-finery
+	.check
+		margin-right: 20px	
+.block-btn				
+	margin: 49px 0px 0px 13px 	
+	.btn
+		margin-right: 24px 			
+/*-----drink-block----------------------*/
+.drink-block
+.range	
+	padding: 4px 0px 6px 24px 
+	+clr
+	input
+		display: inline-block
+		width: 785px
+		margin: 0 23px 
+		height: 1px
+		background: #b8b8b8
+		+box-shadow(0px -1px 0px 0px #acacac, 0px 1px 0px 0px #fff ) 
+	input[type="range"]::-webkit-slider-thumb
+		-webkit-appearance: none
+		position: relative
+		top: -1px
+		z-index: 111
+		width: 6px
+		height: 19px
+		cursor: pointer
+		background: #fff
+		+border-radius(15px) 
+		@include border-radius(4px)
+		background-color: #fff
+		@include box-shadow(0 0 3px rgba(0,0,0,.67))
+		@include background-image(linear-gradient(to bottom, #e6e6e6 0%, #fff 50%, #e6e6e6 100%))
+		+box
+	div
+		display: inline-block
+		vertical-align: top
+		width: 12px
+		overflow: hidden
+		height: 15px
+		a	
+			text-decoration: none
+			font-size: 25px
+			line-height: 10px
+			font-weight: bold
+.range__right	
+	a
+		float: right
+/*-----check------------------------------------*/
+.check
+	display: inline-block
+	margin-right: 13px
+	.check__label
+		vertical-align: top
+		display: inline-block
+		margin: 3px 3px 0 0 
+		cursor: pointer
+
+
 
